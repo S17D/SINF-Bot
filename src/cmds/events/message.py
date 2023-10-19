@@ -2,13 +2,8 @@ import discord
 from discord.ext import commands
 
 from utils import get_data, simplify
-from settings import ANON_SAYS_ID, GENERAL_ID
 
-import io
 import re
-import aiohttp
-import requests
-
 
 class Message(commands.Cog):
 	def __init__(self, bot:commands.Bot):
@@ -34,26 +29,6 @@ class Message(commands.Cog):
 				if re.search(pat,simplify(message.content).lower()) :
 					await message.channel.send(clef["text"],delete_after=clef["time"])
 					break
-
-		#anon says
-		if message.channel.id == int(ANON_SAYS_ID):
-			general = message.guild.get_channel(int(GENERAL_ID))
-
-			Files= []
-			try :
-				for link in message.attachments:
-					link = link.url
-					name = link.split("/")[-1].split(".")[0]
-					Format = link.split(".")[-1]
-					requests.get(link)
-					async with aiohttp.ClientSession() as cs:
-						async with cs.get(link) as resp:
-							Files.append(discord.File(io.BytesIO(await resp.content.read()),filename=f"{name}.{Format}"))
-
-				await general.send(content=message.content, files=Files)
-			except:
-				await general.send("Désolé, une erreur est survenue")
-
 
 
 async def setup(bot:commands.Bot):

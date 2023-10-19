@@ -5,11 +5,11 @@ from discord.ext import commands
 import traceback
 import datetime as dt
 
-from utils import log
+from utils import UnexpectedValue, log
 from settings import ERROR_CHANNEL_ID
 
 class Error(commands.Cog):
-	def __init__(self, bot):
+	def __init__(self, bot:commands.Bot):
 		self.bot : commands.Bot = bot
 
 	@commands.Cog.listener()
@@ -29,13 +29,13 @@ class Error(commands.Cog):
 			elif str(error.per) == "BucketType.channel" : 
 				await ctx.send("Cette commande est déjà en cours d'utilisation dans ce salon",delete_after=5)
 			else :
-				await ctx.send(error)
+				await ctx.send(str(error))
 
 		elif isinstance(error, commands.CommandOnCooldown):
 			await ctx.send(f"Vous ne pouvez pas encore utiliser cette commande, attendez : **{round(error.retry_after,1)}** secondes",delete_after=error.retry_after)
 
 		elif isinstance(error, commands.MissingPermissions):
-			L = error.missing_perms
+			L = error.missing_permissions
 			if len(L) == 1 : 
 				await ctx.send(f"Vous ne pouvez pas executer cette commande, vous avez besoin de la permission : **{L[0]} **!",delete_after=5)
 			elif len(L) > 1 :
@@ -45,9 +45,11 @@ class Error(commands.Cog):
 			await ctx.send(f"**{ctx.author},** Vous n'êtes pas autorisé à utiliser la commande **{ctx.command}**",delete_after=5)
 
 		else :
-			await ctx.send(error)
+			await ctx.send(str(error))
 
 			error_chan = await self.bot.fetch_channel(ERROR_CHANNEL_ID)
+			if not isinstance(error_chan, discord.TextChannel):
+				raise UnexpectedValue("ERROR_CHANNEL_ID doit être l'id d'un salon de texte")
 
 			E = discord.Embed(title=str(error),colour=0xFF0000,timestamp=dt.datetime.now())
 			E.url = ctx.message.jump_url
@@ -69,6 +71,10 @@ class Error(commands.Cog):
 
 
 	async def on_app_command_error(self,inter: discord.Interaction,error: app_commands.AppCommandError):
+		# Allows to check for original exceptions raised and sent to CommandInvokeError.
+		# If nothing is found. Keeps the exception passed to on_command_error.
+		error = getattr(error, 'original', error)
+	
 		if isinstance(error, app_commands.errors.CommandNotFound) :
 			await inter.response.send_message("Cette commande n'existe pas",ephemeral=True)
 	
@@ -76,7 +82,7 @@ class Error(commands.Cog):
 			await inter.response.send_message(f"Vous ne pouvez pas encore utiliser cette commande, attendez : **{round(error.retry_after,1)}** secondes",ephemeral=True)
 
 		elif isinstance(error, app_commands.errors.MissingPermissions):
-			L = error.missing_perms
+			L = error.missing_permissions
 			if len(L) == 1 : 
 				await inter.response.send_message(f"Vous ne pouvez pas executer cette commande, vous avez besoin de la permission : **{L[0]} **!",ephemeral=True)
 			elif len(L) > 1 :
@@ -89,9 +95,11 @@ class Error(commands.Cog):
 			try:
 				await inter.response.send_message(error)
 			except:
-				await inter.followup.send(error)
+				await inter.followup.send(str(error))
 
 			error_chan = await self.bot.fetch_channel(ERROR_CHANNEL_ID)
+			if not isinstance(error_chan, discord.TextChannel):
+				raise UnexpectedValue("ERROR_CHANNEL_ID doit être l'id d'un salon de texte")
 
 			E = discord.Embed(title=str(error),colour=0xFF0000,timestamp=dt.datetime.now())
 			E.description = "\n".join(traceback.format_exception(type(error),error,error.__traceback__))
