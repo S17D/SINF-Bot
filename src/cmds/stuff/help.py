@@ -16,8 +16,8 @@ bot_commands = {
 	"Infos"      : [is_member, "/help", "/file_to_link", "/link_to_file", "/emoji"],
 	"Birthdays"  : [is_member, "/set_birthday", "/birthdays"],
 	"Member Fun" : [is_member, "/confession", "/apoll"],
-	"Fun"        : [None, "/poll", "!/ping"],
-	"Economy"    : [None, "/collect", "/balance", "/levelup", "/tech", "/bank", "/trade", "/summon"],
+	"Fun"        : [None, "/poll", "!/ping", "/wordle"],
+	"Economy"    : [None, "/collect", "/balance", "/levelup", "/tech", "/bank", "/trade"],
 	"Gambling"   : [None, "/roll", "/flip", "/ladder"]
 }
 
@@ -29,7 +29,6 @@ class Help(commands.Cog):
 	@app_commands.describe(query="The command or category you want to get help on")
 	@app_commands.checks.cooldown(1, 5, key=lambda i: (i.guild_id, i.user.id))
 	@app_commands.guild_only()
-	@app_commands.describe(query="The command or category you want to get help on")
 	async def help(self, inter:discord.Interaction, query:Optional[str]):
 		async def get_app_commands(names:list[str]) -> list[app_commands.AppCommand]:
 			guild = await self.bot.fetch_guild(GUILD_ID)
@@ -260,10 +259,18 @@ class Help(commands.Cog):
 
 				# fun commands
 				elif query == "poll":
-					E.description = "**Sends a polll**\nquestion = question to ask"
+					E.description = "**Sends a poll**\nquestion = question to ask"
 					E.add_field(name="**Example**", value="```/poll <question>```")
 					E.add_field(name="**Cooldown**", value="```60s / user```")
 					E.add_field(name="**Requirement**", value="```None```")
+
+				elif query == "wordle":
+					E.description = "**To play wordle**\nWrite your word after sending /wordle"
+					E.add_field (name="How to play",  value="```You have 3 minutes to write to your guess.\n\
+				  												To pause the game, write *stop*. Recall the function to *restart*.```")
+					E.add_field (name = "**Meaning of colors**", value = "```🟩 : The letter in in the right place\n\
+				  															 🟨 : The letter is in the word but not in the right place\n\
+				  															 🟥 : The letter is not in the word```")
 
 				# economy commands
 				elif query == "collect":
@@ -286,11 +293,6 @@ class Help(commands.Cog):
 				elif query == "tech":
 					E.description = "**Upgrade your tech**\n_Each tech upgrade reduces 1% the wait for the collect_"
 					E.add_field(name="**Example**", value="```/tech```")
-					E.add_field(name="**Cooldown**", value="```5s / user```")
-					E.add_field(name="**Requirement**", value="```None```")
-				elif query == "summon":
-					E.description = "**Each candy increases your chances of summoning a traveler by 10%\ncandies = amount of candies to use**\n"
-					E.add_field(name="**Example**", value="```/summon <candies>```")
 					E.add_field(name="**Cooldown**", value="```5s / user```")
 					E.add_field(name="**Requirement**", value="```None```")
 
@@ -426,7 +428,6 @@ class Help(commands.Cog):
 		- A good answer will give you 10💡 ideas and the value of a **/collect**
 		- The traveller randomly spawns withing 2 to 10 hours
 		- The traveller will leave after 1h if no one answered his question
-		- you can **/summon** the traveller with 🍬 candies
 		### Gambling
 		You can gamble your 🌹 roses with **/roll**, **/flip** and **/ladder**
 		Each earning is specific to the game
@@ -439,11 +440,11 @@ class Help(commands.Cog):
 		You can sell your ressources for another ressource
 		### Maths
 		your base value (used for **/collect** and the traveller) is calculated like this: ```py
-		int((150 * (1 + (level/4)))*(1 + (len(achievements)/100)))``` The level up price is calculated like this: (level being the target)```py
+		int((120 * (1 + (level/4.5)))*(1 + (len(achievements)/100)))``` The level up price is calculated like this: (level being the target)```py
 		if level < 10:
-		    price = int((level/1.25) * 1000)
+		    price = int((level/1.7) * 1000)
 		else:
-		    price = int((((level**2)/25) + 4) * 1000)```
+		    price = int((((level**2)/34) + 4) * 1000)```
 		""".replace("\t", "")
 
 		await inter.response.send_message(embed=E)

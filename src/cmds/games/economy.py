@@ -139,11 +139,6 @@ class Economy(commands.Cog):
 		tech = user_data["tech"] + 1
 		price = tech*10
 
-		if tech > 10:
-			E.description = f"{inter.user.mention}, You are already max tech"
-			E.color = discord.Color.red()
-			return await inter.followup.send(embed=E)
-
 		if user_data["ideas"] < price:
 			E.description = f"{inter.user.mention}, You need {price}💡 to upgrade your tech"
 			E.color = discord.Color.red()
@@ -156,27 +151,6 @@ class Economy(commands.Cog):
 		E.description = f"{inter.user.mention}, You are now tech **{tech}**:gear:!"
 
 		await inter.followup.send(embed=E)
-
-	@app_commands.command(description="Try to summon a traveler for a candy")
-	@app_commands.checks.cooldown(1, 5, key=lambda i: (i.guild_id, i.user.id))
-	@app_commands.guild_only()
-	async def summon(self, inter:discord.Interaction):
-		data = get_data(f"games/users/{inter.user.id}")
-
-		if data["candies"] < 1:
-			return await inter.response.send_message(f"You don't have any candies 🍬", ephemeral=True)
-		
-		data["candies"] -= 1
-		upd_data(data, f"games/users/{inter.user.id}")
-
-		if random.random() < 0.5:
-			await inter.response.send_message(f"{inter.user.mention} successfully summoned a traveler!")
-			# for some reason the restart method doesn't work
-			traveler.stop()
-			traveler.start(bot=self.bot)
-		else:
-			await inter.response.send_message(f"{inter.user.mention} failed to summon a traveler...")
-
 
 class Bank(app_commands.Group):
 	def __init__(self, bot:commands.Bot, *args, **kwargs):
@@ -250,15 +224,15 @@ class Bank(app_commands.Group):
 			E.color = discord.Color.red()
 			return await inter.followup.send(embed=E)
 		
-		user_data[translate(currency)] += amount
-		user_data["bank"][translate(currency)] -= amount
-		upd_data(user_data, f"games/users/{inter.user.id}")
-
 		# check if they can withdraw that amount
 		if user_data["bank"][translate(currency)] < amount:
 			E.description = f"{inter.user.mention}, You don't have enough {currency} in your bank account"
 			E.color = discord.Color.red()
 			return await inter.followup.send(embed=E)
+
+		user_data[translate(currency)] += amount
+		user_data["bank"][translate(currency)] -= amount
+		upd_data(user_data, f"games/users/{inter.user.id}")
 
 		E.description = f"{inter.user.mention}, You withdrew {amount}{currency} from your bank account"
 		await inter.followup.send(embed=E)

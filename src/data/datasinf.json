@@ -1,5 +1,5 @@
 {
-    "phrasesID": 114,
+    "phrasesID": 118,
     "phrases": [
         {
             "mot": "avatar",
@@ -228,6 +228,30 @@
             "text": "VIOLENCE",
             "time": 1,
             "id": 113
+        },
+        {
+            "mot": "627431499960156161",
+            "text": "https://tenor.com/view/skeletor-wordle-awoo-gif-24848356",
+            "time": 5,
+            "id": 114
+        },
+        {
+            "mot": "photo",
+            "text": "LEI-JIE SORT LE TEL",
+            "time": null,
+            "id": 115
+        },
+        {
+            "mot": "Zi-QI",
+            "text": "menace pour la soci\u00e9t\u00e9",
+            "time": 1,
+            "id": 116
+        },
+        {
+            "mot": "creeper",
+            "text": "Aw man",
+            "time": 3,
+            "id": 117
         }
     ],
     "tetris": {
@@ -316,15 +340,32 @@
             "year": 2004,
             "month": 5,
             "day": 31
+        },
+        "269210243093889028": {
+            "year": 2002,
+            "month": 10,
+            "day": 18
+        },
+        "553163806600331284": {
+            "year": 2004,
+            "month": 11,
+            "day": 2
+        },
+        "290494427330510849": {
+            "year": 2004,
+            "month": 2,
+            "day": 14
         }
     },
     "games": {
+        "todays_word_en": "viola",
+        "todays_word_fr": "banjo",
         "users": {
             "560155603574718475": {
-                "level": 4,
-                "timely": 1697131895,
+                "level": 17,
+                "timely": 1707271218,
                 "roses": 0,
-                "candies": 2,
+                "candies": 11,
                 "ideas": 0,
                 "bank": {
                     "roses": 0,
@@ -332,56 +373,14 @@
                     "ideas": 0
                 },
                 "achievements": [],
-                "tech": 2
+                "tech": 7
             },
             "366975965601071104": {
-                "level": 4,
-                "timely": 1697144909,
-                "roses": 0,
-                "candies": 0,
-                "ideas": 0,
-                "bank": {
-                    "roses": 0,
-                    "candies": 0,
-                    "ideas": 0
-                },
-                "achievements": [],
-                "tech": 1
-            },
-            "443867585075871767": {
-                "level": 3,
-                "timely": 1697146981,
-                "roses": 19,
-                "candies": 0,
-                "ideas": 0,
-                "bank": {
-                    "roses": 0,
-                    "candies": 0,
-                    "ideas": 0
-                },
-                "achievements": [],
-                "tech": 0
-            },
-            "346945067975704577": {
-                "level": 6,
-                "timely": 1697125784,
-                "roses": 222,
-                "candies": 1,
-                "ideas": 10,
-                "bank": {
-                    "roses": 0,
-                    "candies": 0,
-                    "ideas": 0
-                },
-                "achievements": [],
-                "tech": 5
-            },
-            "627431499960156161": {
-                "level": 5,
-                "timely": 1697136726,
-                "roses": 0,
-                "candies": 1,
-                "ideas": 0,
+                "level": 13,
+                "timely": 1707243044,
+                "roses": 700,
+                "candies": 4,
+                "ideas": 20,
                 "bank": {
                     "roses": 0,
                     "candies": 0,
@@ -390,11 +389,11 @@
                 "achievements": [],
                 "tech": 4
             },
-            "183259368286978048": {
-                "level": 5,
-                "timely": 1697142998,
-                "roses": 15,
-                "candies": 0,
+            "443867585075871767": {
+                "level": 6,
+                "timely": 1707240492,
+                "roses": 2287,
+                "candies": 4,
                 "ideas": 0,
                 "bank": {
                     "roses": 0,
@@ -402,58 +401,100 @@
                     "ideas": 0
                 },
                 "achievements": [],
-                "tech": 3
+                "tech": 6
+            },
+            "346945067975704577": {
+                "level": 17,
+                "timely": 1707207634,
+                "roses": 3266,
+                "candies": 6,
+                "ideas": 43,
+                "bank": {
+                    "roses": 0,
+                    "candies": 0,
+                    "ideas": 0
+                },
+                "achievements": [],
+                "tech": 6
+            },
+            "627431499960156161": {
+                "level": 18,
+                "timely": 1707280550,
+                "roses": 600,
+                "candies": 9,
+                "ideas": 51,
+                "bank": {
+                    "roses": 0,
+                    "candies": 0,
+                    "ideas": 0
+                },
+                "achievements": [],
+                "tech": 9
+            },
+            "183259368286978048": {
+                "level": 13,
+                "timely": 1707279550,
+                "roses": 0,
+                "candies": 5,
+                "ideas": 71,
+                "bank": {
+                    "roses": 0,
+                    "candies": 0,
+                    "ideas": 0
+                },
+                "achievements": [],
+                "tech": 8
             },
             "752574610666684426": {
                 "level": 1,
-                "timely": 1695180898,
-                "roses": 148,
+                "timely": 1703121717,
+                "roses": 1497,
                 "candies": 0,
-                "ideas": 0,
+                "ideas": 1,
                 "bank": {
                     "roses": 0,
                     "candies": 0,
                     "ideas": 0
                 },
                 "achievements": [],
-                "tech": 0
+                "tech": 2
             },
             "271305579698323456": {
-                "level": 6,
-                "timely": 1697110566,
-                "roses": 10,
-                "candies": 0,
-                "ideas": 20,
+                "level": 15,
+                "timely": 1707243518,
+                "roses": 520,
+                "candies": 8,
+                "ideas": 101,
                 "bank": {
                     "roses": 0,
                     "candies": 0,
                     "ideas": 0
                 },
                 "achievements": [],
-                "tech": 2
+                "tech": 10
             },
             "269210243093889028": {
-                "level": 3,
-                "timely": 1697137299,
-                "roses": 0,
-                "candies": 0,
-                "ideas": 10,
+                "level": 12,
+                "timely": 1707213348,
+                "roses": 100,
+                "candies": 2,
+                "ideas": 60,
                 "bank": {
                     "roses": 0,
                     "candies": 0,
                     "ideas": 0
                 },
                 "achievements": [],
-                "tech": 2
+                "tech": 5
             },
             "454318083876847616": {
-                "level": 0,
-                "timely": 1697059156,
+                "level": 2,
+                "timely": 1706943890,
                 "roses": 0,
-                "candies": 0,
+                "candies": 2,
                 "ideas": 0,
                 "bank": {
-                    "roses": 230,
+                    "roses": 243,
                     "candies": 0,
                     "ideas": 0
                 },
@@ -461,18 +502,18 @@
                 "tech": 0
             },
             "553163806600331284": {
-                "level": 3,
-                "timely": 1697089204,
+                "level": 8,
+                "timely": 1707266567,
                 "roses": 0,
-                "candies": 0,
-                "ideas": 0,
+                "candies": 10,
+                "ideas": 32,
                 "bank": {
                     "roses": 0,
                     "candies": 0,
                     "ideas": 0
                 },
                 "achievements": [],
-                "tech": 0
+                "tech": 3
             },
             "936185870724239402": {
                 "level": 0,
@@ -490,12 +531,12 @@
             },
             "415538227705806850": {
                 "level": 1,
-                "timely": 1697008951,
-                "roses": 374,
+                "timely": 1698386482,
+                "roses": 0,
                 "candies": 0,
                 "ideas": 0,
                 "bank": {
-                    "roses": 250,
+                    "roses": 0,
                     "candies": 0,
                     "ideas": 0
                 },
@@ -534,6 +575,76 @@
                 "level": 0,
                 "timely": 1696057373,
                 "roses": 60,
+                "candies": 0,
+                "ideas": 0,
+                "tech": 0,
+                "bank": {
+                    "roses": 0,
+                    "candies": 0,
+                    "ideas": 0
+                },
+                "achievements": []
+            },
+            "341613738622713856": {
+                "level": 0,
+                "timely": 1700632776,
+                "roses": 0,
+                "candies": 0,
+                "ideas": 0,
+                "tech": 0,
+                "bank": {
+                    "roses": 0,
+                    "candies": 0,
+                    "ideas": 0
+                },
+                "achievements": []
+            },
+            "303485893317230593": {
+                "level": 4,
+                "timely": 1707267131,
+                "roses": 0,
+                "candies": 0,
+                "ideas": 0,
+                "tech": 2,
+                "bank": {
+                    "roses": 0,
+                    "candies": 0,
+                    "ideas": 0
+                },
+                "achievements": []
+            },
+            "411881842439094272": {
+                "level": 15,
+                "timely": 1707254639,
+                "roses": 74,
+                "candies": 5,
+                "ideas": 51,
+                "tech": 7,
+                "bank": {
+                    "roses": 0,
+                    "candies": 0,
+                    "ideas": 0
+                },
+                "achievements": []
+            },
+            "290494427330510849": {
+                "level": 1,
+                "timely": 1707267825,
+                "roses": 0,
+                "candies": 0,
+                "ideas": 1,
+                "tech": 0,
+                "bank": {
+                    "roses": 0,
+                    "candies": 0,
+                    "ideas": 0
+                },
+                "achievements": []
+            },
+            "356148005767741448": {
+                "level": 0,
+                "timely": 1704330503,
+                "roses": 0,
                 "candies": 0,
                 "ideas": 0,
                 "tech": 0,

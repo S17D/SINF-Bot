@@ -307,7 +307,9 @@ def new_user():
 			"candies" : 0,
 			"ideas"   : 0
 		},
-		"achievements" : []
+		"achievements" : [],
+		"wordle_en" : {},
+		"wordle_fr" : {}
 	}
 
 def get_amount(cash: int, txt: str) -> Optional[int]:
